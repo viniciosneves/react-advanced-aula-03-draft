@@ -4,6 +4,7 @@ import Header from './components/Header'
 import AppContainer from './components/AppContainer'
 import Filters from './components/Filters'
 import Products from './components/Products'
+import { CartProvider } from './state/CartContext'
 
 const products = [
   {
@@ -109,9 +110,11 @@ function App() {
     <>
       <GlobalStyle />
       <AppContainer>
-        <Header />
-        <Filters />
-        <Products products={products}/>
+        <CartProvider>
+            <Header />
+            <Filters />
+            <Products products={products}/>
+        </CartProvider>
       </AppContainer>
     </>
   )

@@ -6,33 +6,8 @@ import ModalCartItem from "../ModalCartItem";
 import Button from "../Button";
 import Cart from "../icons/Cart";
 import { useState } from "react";
+import { useCartContext } from "../../state/CartContext";
 
-const products = [
-    {
-        id: 1,
-        name: "Woman Sleeve 003",
-        imageSrc: "/products/woman-short-sleeve-003.png",
-        price: 79.99,
-        size: "XL",
-        color: "Blue"
-    },
-    {
-        id: 2,
-        name: "Men Shirt 001",
-        imageSrc: "/products/men-shirt-001.png",
-        price: 89.99,
-        size: "L",
-        color: "Gray"
-    },
-    {
-        id: 3,
-        name: "Men Shirt 002",
-        imageSrc: "/products/men-shirt-002.png",
-        price: 99.99,
-        size: "S",
-        color: "Black"
-    },
-];
 
 
 const ModalCartItems = styled.ul`
@@ -70,6 +45,8 @@ const ModalCartActions = styled.footer`
 const ModalCart = () => {
     
     const [isOpen, setIsOpen] = useState(false)
+
+    const { products } = useCartContext()
 
     return (
         <>
