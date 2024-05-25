@@ -29,18 +29,23 @@ const Price = styled.p`
 
 const AddToCardButton = styled.button`
     border: 1px solid #7A42AB;
-    background-color: transparent;
+    background-color: ${props => props.disabled ? '#7A42AB' : 'transparent'};
     cursor: pointer;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 5px;
+    &:disabled {
+        cursor: not-allowed;
+    }
 `
 
 const ProductCard = ({ product }) => {
 
-    const { addItem } = useCartContext()
+    const { addItem, isInCart } = useCartContext()
+
+    const inCart = isInCart(product);
 
     return (
         <StyledCard>
@@ -57,8 +62,8 @@ const ProductCard = ({ product }) => {
                         {product.color} {product.size}</p>
                     </li>
                     <li>
-                        <AddToCardButton onClick={() => addItem(product)}>
-                            <AddToCart />
+                        <AddToCardButton disabled={inCart} onClick={() => addItem(product)}>
+                            <AddToCart highligth={inCart}/>
                         </AddToCardButton>
                     </li>
                 </ul>

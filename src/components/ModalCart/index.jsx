@@ -46,7 +46,7 @@ const ModalCart = () => {
     
     const [isOpen, setIsOpen] = useState(false)
 
-    const { products } = useCartContext()
+    const { products, getTotalCartValue } = useCartContext()
 
     return (
         <>
@@ -69,7 +69,7 @@ const ModalCart = () => {
                     <li>
                         <p>Subtotal</p>
                         <Amount>
-                            R$ 300
+                            R$ {getTotalCartValue()}
                         </Amount>
                     </li>
                     <li>
@@ -81,7 +81,7 @@ const ModalCart = () => {
                     <li>
                         <p>Total</p>
                         <Amount>
-                            R$ 300
+                            R$ {getTotalCartValue()}
                         </Amount>
                     </li>
                 </Summary>
