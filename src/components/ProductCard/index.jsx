@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import AddToCart from "../icons/AddToCart"
+import { useCartContext } from "../../state/CartContext"
 
 const StyledCard = styled.div`
     background-color: white;
@@ -38,6 +39,9 @@ const AddToCardButton = styled.button`
 `
 
 const ProductCard = ({ product }) => {
+
+    const { addItem } = useCartContext()
+
     return (
         <StyledCard>
             <img src={product.imageSrc} />
@@ -53,7 +57,7 @@ const ProductCard = ({ product }) => {
                         {product.color} {product.size}</p>
                     </li>
                     <li>
-                        <AddToCardButton>
+                        <AddToCardButton onClick={() => addItem(product)}>
                             <AddToCart />
                         </AddToCardButton>
                     </li>
